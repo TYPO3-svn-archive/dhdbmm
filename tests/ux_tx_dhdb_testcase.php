@@ -33,34 +33,16 @@ require_once(t3lib_extMgm::extPath('oelib') . 'class.tx_oelib_Autoloader.php');
  * @author Oliver Klee <typo3-coding@oliverklee.de>
  */
 class ux_tx_dhdb_testcase extends tx_phpunit_testcase {
-	/**
-	 * @var ux_tx_dhdb
-	 */
-	private $fixture;
-
-	/**
-	 * @var tx_oelib_testingFramework
-	 */
-	private $testingFramework;
-
 	public function setUp() {
-		$this->testingFramework = new tx_oelib_testingFramework('tx_dhdbmm');
-		$this->fixture = $this->getMock(
-			'ux_tx_dhdb'
-		);
 	}
 
 	public function tearDown() {
-		$this->testingFramework->cleanUp();
-
-		$this->fixture->__destruct();
-		unset($this->fixture, $this->testingFramework);
 	}
 
 	/**
 	 * @test
 	 */
-	public function makeInstanceCreateXclassInstance() {
+	public function makeInstanceCreatesXclassInstance() {
 		$this->assertTrue(
 			t3lib_div::makeInstance('tx_dhdb')
 				instanceof ux_tx_dhdb
